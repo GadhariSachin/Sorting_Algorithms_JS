@@ -10,11 +10,21 @@ Selection sort is a simple and efficient sorting algorithm that works by repeate
 -------------
 Psuedo Code
 -------------
-- Manage two pointers lets say, 
-  - i (which will keep track of sorted array) 
-  - j (which will keep track of index of mininmum value)
-  - variable minValue which will keep track of the minimum value
-- Scan through unsorted array of elements
+- Initialize two pointers to keep track of sorted and unsorte array as
+    i = 0 and  j = 0 and a variable to track min index;
+
+- Loop from 0 to array length - 1
+  
+  - Set minIndex = i
+
+  - Loop from j = i + 1 to arrayLength
+
+    - if we find any smaller element in array[i+1, arrayLength]
+        - Update minIndex to j
+  
+  - Swap unSortedArray[minIndex] with unSortedArray[i]
+
+- Return sorted array
 
 
 
