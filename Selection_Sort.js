@@ -4,7 +4,7 @@
 ---------------
 Selection Sort (Read More here - https://www.geeksforgeeks.org/selection-sort/)
 ---------------
-Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list. 
+Selection sort is a simple and efficient sorting algorithm that works by repeatedly selecting the smallest (or largest) element from the unsorted portion of the list and moving it to the sorted portion of the list.
 
 
 -------------
@@ -14,14 +14,14 @@ Psuedo Code
     i = 0 and  j = 0 and a variable to track min index;
 
 - Loop from 0 to array length - 1
-  
+
   - Set minIndex = i
 
   - Loop from j = i + 1 to arrayLength
 
     - if we find any smaller element in array[i+1, arrayLength]
         - Update minIndex to j
-  
+
   - Swap unSortedArray[minIndex] with unSortedArray[i]
 
 - Return sorted array
@@ -35,28 +35,27 @@ Time Complexity -  O(N^2)
 
 */
 
-function SlectionSort(unSortedArray) {
+function SlectionSortWithSmallerElement(unSortedArray) {
   let i = 0,
     j = 0,
     minIndex = 0;
-  
+
   const arrayLength = unSortedArray.length;
 
-  // One by one move boundary of unsorted subarray 
+  // One by one move boundary of unsorted subarray
   for (i = 0; i < arrayLength - 1; i++) {
-  
-    // Find the minimum element in unsorted array 
+    // Find the minimum element in unsorted array
     minIndex = i;
     for (let j = i + 1; j < arrayLength; j++) {
-
       if (unSortedArray[j] < unSortedArray[minIndex]) {
         minIndex = j;
       }
-
     }
-    
-    console.log(`::: Sort Iteration - ${i+1} ::: `);
-    console.log(`::: Swap Values ::: arr[${i}] - ${unSortedArray[i]} and arr[${minIndex}] - ${unSortedArray[minIndex]}`);
+
+    console.log(`::: Sort Iteration - ${i + 1} ::: `);
+    console.log(
+      `::: Swap Values ::: arr[${i}] - ${unSortedArray[i]} and arr[${minIndex}] - ${unSortedArray[minIndex]}`,
+    );
 
     console.log(`::: Before Swap ::: `, unSortedArray);
 
@@ -70,8 +69,52 @@ function SlectionSort(unSortedArray) {
   return unSortedArray;
 }
 
+function SlectionSortWithLargerElement(unSortedArray) {
+  const arrayLength = unSortedArray.length;
+
+  // One by one move boundary of unsorted subarray
+  for (let i = arrayLength - 1; i >= 0; i--) {
+    let maxIndex = i;
+    // Find the maximum element in unsorted array
+    for (let j = 0; j < i; j++) {
+      if (unSortedArray[j] > unSortedArray[maxIndex]) {
+        maxIndex = j;
+      }
+    }
+
+    // Swap the found maximum element with the last element
+    if (maxIndex !== i) {
+      console.log(`::: Sort Iteration - ${arrayLength - i} ::: `);
+      console.log(
+        `::: Swap Values ::: arr[${i}] - ${unSortedArray[i]} and arr[${maxIndex}] - ${unSortedArray[maxIndex]}`,
+      );
+
+      console.log(`::: Before Swap ::: `, unSortedArray);
+
+      const temp = unSortedArray[maxIndex];
+      unSortedArray[maxIndex] = unSortedArray[i];
+      unSortedArray[i] = temp;
+
+      console.log(`::: After Swap ::: `, unSortedArray);
+    }
+  }
+
+  return unSortedArray;
+}
+
 const inputArray = [10, 2, 3, 67, 100, 56, 7, 4];
 
-const sortedArray = SlectionSort(inputArray);
+const sortedArrayWithSmallerElement =
+  SlectionSortWithSmallerElement(inputArray);
 
-console.log("Sorted Array using Selection Sort ::: ", sortedArray);
+console.log(
+  "Sorted Array using Selection Sort ::: ",
+  sortedArrayWithSmallerElement,
+);
+
+const sortedArrayWithLargerElement = SlectionSortWithLargerElement(inputArray);
+
+console.log(
+  "Sorted Array using Selection Sort ::: ",
+  sortedArrayWithLargerElement,
+);
