@@ -14,10 +14,28 @@ Time Complexity -  O(N^2)
 */
 
 function BubbleSort(unSortedArray) {
+  
+  let i, j;
+
+  for (i = 0; i < unSortedArray.length; i++){
+    console.log(`::: Sort Iteration - ${i + 1} ::: `);
+
+    for (j = i; j < unSortedArray.length - i - 1; j++){
+      console.log(`::: Sort Inner Iteration - ${i + 1} - ${j + 1} ::: `);
+      console.log(`::: Before Swap ::: `, unSortedArray);
+      if (unSortedArray[j] > unSortedArray[j + 1]) {
+        const temp = unSortedArray[j];
+        unSortedArray[j] = unSortedArray[j + 1];
+        unSortedArray[j + 1] = temp;
+      }
+      console.log(`::: After Swap ::: `, unSortedArray);
+    }
+  }
+  
   return unSortedArray;
 }
 
-const inputArray = [10, 2, 3, 67, 100, 56, 7, 4];
+const inputArray = [5, 8, 3];
 
 const sortedArray = BubbleSort(inputArray);
 
