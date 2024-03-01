@@ -9,7 +9,7 @@ The array is virtually split into a sorted and an unsorted part. Values from the
 
 
 ----------------
-Time Complexity -  O(N^2)
+Time Complexity -  O(N^2), O(N^2), O(N) 
 ----------------
 
 */
