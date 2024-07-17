@@ -6,6 +6,7 @@ const arrayInput = [1, 2, 3, 4];
 
 Array.prototype.customMap = function (callback) {
   const tempArray = [];
+  console.log( this );
 
   for (let i = 0; i < this.length; i++) {
     tempArray.push(callback(this[i], i, this));
